@@ -13,7 +13,10 @@ cat .ssh/config
 	RemoteCommand ssh 10.132.0.3
 bastion_IP = 35.241.239.250
 someinternalhost_IP = 10.132.0.3
-3) Create instance with script: 
+3) Parametres testapp
+testapp_IP = 35.198.103.131
+testapp_port = 9292
+4) Create instance with script: 
 gcloud compute instances create reddit-app  --boot-disk-size=10GB   --image-family ubuntu-1604-lts   --image-project=ubuntu-os-cloud   --machine-type=g1-small   --tags puma-server   --restart-on-failure --zone=europe-west3-b --metadata-from-file startup-script=startup_script.sh
-4) Create firewall rules with gcloud:
+5) Create firewall rules with gcloud:
 gcloud compute --project=infra-244205 firewall-rules create default-puma-server --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:9292 --source-ranges=0.0.0.0/0 --target-tags=puma-server
