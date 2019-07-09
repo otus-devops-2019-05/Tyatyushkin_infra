@@ -1,0 +1,10 @@
+{
+  "id": "masterplan",
+  "sif": "ubuntu-1604-lts",
+  "mt": "f1-micro",
+  "dm": "masterplan",
+  "ds": "20",
+  "dt": "pd-ssd",
+  "net": "default",
+  "tags": "puma-server"
+}
