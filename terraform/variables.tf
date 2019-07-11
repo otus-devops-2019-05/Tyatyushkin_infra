@@ -26,3 +26,4 @@ variable app_zone {
   description = "zone for app"
   default     = "europe-west1-b"
 }
+
