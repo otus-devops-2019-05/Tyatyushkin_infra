@@ -1,0 +1,10 @@
+[Unit]
+Description=Puma
+
+[Service]
+WorkingDirectory=/opt/reddit
+ExecStart=/usr/bin/bundle exec puma
+
+[Install]
+WantedBy=multi-user.target
+
