@@ -1,6 +1,6 @@
 terraform {
   # Версия terraform  
-  required_version = "0.11.7"
+  required_version = "0.11.11"
 }
 
 provider "google" {
@@ -19,8 +19,9 @@ resource "google_compute_project_metadata_item" "default" {
 
 
 resource "google_compute_instance" "app" {
-  name         = "reddit-app"
+  name         = "reddit-app${count.index}"
   machine_type = "g1-small"
+  count        = 2
   zone         = "${var.app_zone}"
   tags         = ["reddit-app"]
 
