@@ -24,3 +24,17 @@ gcloud compute --project=infra-244205 firewall-rules create default-puma-server 
 7) Create advanced config for reddit-base
 8) Create packer config for reddit-full
 9) Create script for create instance from reddit-full image
+10) Добавлен SSH ключ польльзователя appuser1 в метаданные проектаresource "google_compute_project_metadata_item" "default" {
+  key = "ssh-keys"
+  value = "appuser:${file(var.public_key_path)}"
+}
+11) Добавлены несколько пользователей в метаданные проекта
+resource "google_compute_project_metadata_item" "default" {
+  key = "ssh-keys"
+  value = "appuser:${file(var.public_key_path)}\nappuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}"
+}
+12) Добавлен ключ через web, но после выполнения terraform apply он был затерт и все вернулось на конфигурацию которая описана в terraform
+13) Создан файл балансировщика lb.tf c IP 34.96.74.154
+14) Создан файл с конфигурацией reddit-app2.tf для второго сервера, и отключен сервис пума для  проверки работы балансировщика
+15) Удалена конфигурация reddit-app2.tf и созданна переменная count
+count        = "${var.app_count}"
