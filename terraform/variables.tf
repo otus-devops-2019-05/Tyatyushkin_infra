@@ -27,3 +27,7 @@ variable app_zone {
   default     = "europe-west1-b"
 }
 
+variable app_count {
+  description = "add count for servers"
+  default = "1"
+}
